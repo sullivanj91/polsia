@@ -34,4 +34,5 @@ async def update_config(
         setattr(config, field, value)
 
     await db.flush()
+    await db.refresh(config)
     return config

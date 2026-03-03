@@ -1,7 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import DateTime, Integer, String, Text, func
-from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy import DateTime, Integer, JSON, String, Text, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.core.database import Base
@@ -17,9 +16,9 @@ class CompanyConfig(Base):
     description: Mapped[str | None] = mapped_column(Text)
     target_market: Mapped[str | None] = mapped_column(Text)
     value_prop: Mapped[str | None] = mapped_column(Text)
-    pricing_model: Mapped[dict | None] = mapped_column(JSONB, default=dict)
-    goals: Mapped[dict | None] = mapped_column(JSONB, default=dict)
-    kpis: Mapped[dict | None] = mapped_column(JSONB, default=dict)
+    pricing_model: Mapped[dict | None] = mapped_column(JSON, default=dict)
+    goals: Mapped[dict | None] = mapped_column(JSON, default=dict)
+    kpis: Mapped[dict | None] = mapped_column(JSON, default=dict)
     website_url: Mapped[str | None] = mapped_column(String(512))
     github_repo: Mapped[str | None] = mapped_column(String(512))
     product_type: Mapped[str | None] = mapped_column(String(100))

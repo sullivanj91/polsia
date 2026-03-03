@@ -41,6 +41,6 @@ async def get_recent_activity(
     db: AsyncSession, limit: int = 50, offset: int = 0
 ) -> list[ActivityLog]:
     result = await db.execute(
-        select(ActivityLog).order_by(ActivityLog.created_at.desc()).offset(offset).limit(limit)
+        select(ActivityLog).order_by(ActivityLog.created_at.desc(), ActivityLog.id.desc()).offset(offset).limit(limit)
     )
     return list(result.scalars().all())

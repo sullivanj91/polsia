@@ -65,6 +65,7 @@ def mock_chroma(mocker):
         "distances": [[0.1]],
     })
     mocker.patch("app.core.chroma_client.get_collection", return_value=collection)
+    mocker.patch("app.services.memory_service.get_collection", return_value=collection)
     return collection
 
 

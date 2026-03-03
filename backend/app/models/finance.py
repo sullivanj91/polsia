@@ -1,7 +1,6 @@
 from datetime import date, datetime
 
-from sqlalchemy import Date, DateTime, Integer, String, Text, func
-from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy import Date, DateTime, Integer, JSON, String, Text, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.core.database import Base
@@ -17,7 +16,7 @@ class StripeEvent(Base):
     amount_cents: Mapped[int | None] = mapped_column(Integer)
     currency: Mapped[str | None] = mapped_column(String(10))
     status: Mapped[str] = mapped_column(String(50), default="processed")
-    raw_payload: Mapped[dict | None] = mapped_column(JSONB)
+    raw_payload: Mapped[dict | None] = mapped_column(JSON)
     processed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
